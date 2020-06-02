@@ -1,0 +1,9 @@
+﻿<h1>Reflective XSS</h1>
+<h3>A Webpage That Greets You</h3>
+<form onsubmit="setName();" method="get" action="/api/greeting">
+    <div class="form-group">
+        <label for="name">What is your name?</label>
+        <input type="text" id="name" name="name" placeholder="Perhaps your name is Bob, or a script element" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Get Greeting</button>
+</form>

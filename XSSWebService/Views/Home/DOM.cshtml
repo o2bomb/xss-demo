@@ -1,0 +1,31 @@
+﻿<h1>DOM XSS</h1>
+<h3>A Search Engine</h3>
+<form onsubmit="search(); return false;">
+    <div class="form-group">
+        <label for="query">Search query</label>
+        <input type="text" id="query" name="query" placeholder="Search for something" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<div>You searched for:</div>
+<div id="item"></div>
+
+<script>
+    window.onload = function () {
+        // Check for url-based search queries
+        const query = location.search.substring(7);
+        showQuery(query);
+    };
+
+    function search() {
+        const query = $('#query').val();
+
+        showQuery(query);
+    }
+
+    function showQuery(query) {
+        // Show the user's search query insecurely in the DOM
+        $("#item").html(query);
+    }
+</script>

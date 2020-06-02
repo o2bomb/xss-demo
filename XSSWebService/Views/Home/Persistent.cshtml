@@ -1,0 +1,56 @@
+﻿<h1>Persistent XSS</h1>
+<h3>A Collaborative To-do List App</h3>
+<form onsubmit="createTodo(); return false;">
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" placeholder="Try refreshing the page after adding an element" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Create To-do</button>
+</form>
+
+<ul id="todoList">
+    <!-- List items are insterted programmatically -->
+</ul>
+
+<script>
+    window.onload = function () {
+        // Fetch todos on window startup
+        getTodos();
+    };
+
+    function createTodo() {
+        const description = $('#description').val();
+        $.ajax({
+            url: '/api/todo/add',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(description),
+            success: function (data, textStatus, jqXHR) {
+                addTodoItem(description)
+            },
+            error: function (response) {
+                window.alert("Failed to create to-do: " + response.responseText);
+            }
+        });
+    }
+
+    function getTodos() {
+        $.ajax({
+            url: '/api/todo/all',
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (data, textStatus, jqXHR) {
+                data.forEach(function (element) {
+                    addTodoItem(element);
+                });
+            },
+            error: function (response) {
+                window.alert("Failed to get to-dos: " + response.responseText);
+            }
+        });
+    }
+
+    function addTodoItem(todo) {
+        $("#todoList").append("<li>" + todo + "</li>");
+    }
+</script>
