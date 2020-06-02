@@ -1,4 +1,5 @@
 ﻿<h1>DOM XSS</h1>
+@Html.ActionLink("Click here for the invulnerable page", "Fixeddom", "Home", new { area = "" }, new { @class = "btn btn-success btn-lg" })
 <h3>A Search Engine</h3>
 <form onsubmit="search(); return false;">
     <div class="form-group">
@@ -12,12 +13,6 @@
 <div id="item"></div>
 
 <script>
-    window.onload = function () {
-        // Check for url-based search queries
-        const query = location.search.substring(7);
-        showQuery(query);
-    };
-
     function search() {
         const query = $('#query').val();
 

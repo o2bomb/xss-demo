@@ -1,4 +1,5 @@
 ﻿<h1>Reflective XSS</h1>
+@Html.ActionLink("Click here for the invulnerable page", "Fixedreflective", "Home", new { area = "" }, new { @class = "btn btn-success btn-lg" })
 <h3>A Webpage That Greets You</h3>
 <form onsubmit="setName();" method="get" action="/api/greeting">
     <div class="form-group">

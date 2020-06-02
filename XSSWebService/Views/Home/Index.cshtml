@@ -1,12 +1,11 @@
 ﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>XSS Demo</h1>
+    <p class="lead">This web app demonstrates the three types of XSS attacks (DOM, Persistent, Reflective) and shows potential fixes for each type of attack.</p>
 </div>
 <div class="row">
     <div class="col-md-4">
         <h2>DOM XSS</h2>
-        <p>A demonstration of DOM-based XSS, in the context of a web forum page, where the entire attack can take place on the client, without any requests made to the server. The client inserts user input into the DOM insecurely, resulting in an XSS vulnerability.</p>
+        <p>A demonstration of DOM-based XSS, in the context of a search engine, where the entire attack can take place on the client, without any requests made to the server. The client inserts user input into the DOM insecurely, resulting in an XSS vulnerability.</p>
         <p>@Html.ActionLink("DOM XSS", "Dom", "Home", new { area = "" }, new { @class = "btn btn-default" })</p>
     </div>
     <div class="col-md-4">

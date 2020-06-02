@@ -35,5 +35,26 @@ namespace XSSWebService.Controllers
 
             return View();
         }
+
+        public ActionResult Fixeddom()
+        {
+            ViewBag.Title = "Fixed version";
+
+            return View();
+        }
+
+        public ActionResult Fixedpersistent()
+        {
+            ViewBag.Title = "Fixed version";
+
+            return View();
+        }
+
+        public ActionResult Fixedreflective()
+        {
+            ViewBag.Title = "Fixed version";
+
+            return View();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿<h1>Persistent XSS</h1>
+@Html.ActionLink("Click here for the invulnerable page", "Fixedpersistent", "Home", new { area = "" }, new { @class = "btn btn-success btn-lg" })
 <h3>A Collaborative To-do List App</h3>
 <form onsubmit="createTodo(); return false;">
     <div class="form-group">
@@ -51,6 +52,7 @@
     }
 
     function addTodoItem(todo) {
+        // Insecurely insert a list item
         $("#todoList").append("<li>" + todo + "</li>");
     }
 </script>
