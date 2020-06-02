@@ -1,0 +1,28 @@
+﻿<h1>DOM XSS</h1>
+<h3>A Search Engine (Fixed version)</h3>
+<form onsubmit="search(); return false;">
+    <div class="form-group">
+        <label for="query">Search query</label>
+        <input type="text" id="query" name="query" placeholder="Search for something" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<div>You searched for:</div>
+<div id="item"></div>
+
+<script>
+    function search() {
+        const query = $('#query').val();
+
+        showQuery(query);
+    }
+
+    function showQuery(query) {
+        // Insert item securely, by only treating user input as text, not html
+        // This means avoiding the user of methods such as document.innerHTML and $("#item").html()
+        var target = document.getElementById("item");
+        // Insert input into the div using the document.textContent attribute instead of document.innerHTML
+        target.textContent = query;
+    }
+</script>
